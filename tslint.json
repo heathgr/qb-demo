@@ -26,6 +26,13 @@
       "variable-name": {
           "severity": "error",
           "options": "allow-pascal-case"
+      },
+      "quotemark": {
+          "severity": "error",
+          "options": [
+              "single",
+              "jsx-single"
+          ]
       }
   },
   "rulesDirectory": []
