@@ -15,5 +15,16 @@
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.14"
+  },
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
+    "r-is-for-react": "^0.0.1",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "s-is-for-store": "^0.2.1"
   }
 }
