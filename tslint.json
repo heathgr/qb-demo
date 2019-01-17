@@ -1,0 +1,32 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+      "tslint:recommended",
+      "tslint-config-airbnb"
+  ],
+  "jsRules": {},
+  "rules": {
+      "array-type": {
+          "severity": "off"
+      },
+      "semicolon": {
+          "severity": "error",
+          "options": "never"
+      },
+      "interface-name": {
+          "severity": "error",
+          "options": "never-prefix"
+      },
+      "no-console": {
+          "severity": "warning"
+      },
+      "object-shorthand-properties-first": {
+          "severity": "off"
+      },
+      "variable-name": {
+          "severity": "error",
+          "options": "allow-pascal-case"
+      }
+  },
+  "rulesDirectory": []
+}
