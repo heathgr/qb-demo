@@ -1,7 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const firebaseDevelopmentConfig = require('./config/firebase.config.development')
-const firebaseProductionConfig = require('./config/firebase.config.production')
 
 const { env } = process
 const production = env.PRODUCTION
@@ -38,9 +36,4 @@ module.exports = {
     overlay: true,
     historyApiFallback: true,
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      firebaseConfig: JSON.stringify(production ? firebaseProductionConfig : firebaseDevelopmentConfig)
-    }),
-  ]
 }
