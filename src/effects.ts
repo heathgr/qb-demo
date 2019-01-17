@@ -1,6 +1,9 @@
-import { getState, setState } from './store'
-
-const CHARACTER_LIMIT = 40
+import {
+  CHARACTER_LIMIT,
+  Choice,
+  getState,
+  setState,
+} from './store'
 
 export const updateLabel = (newLabel: string) => {
   const validatedLabel = newLabel.substring(0, CHARACTER_LIMIT)
@@ -14,8 +17,22 @@ export const toggleMultiSelect = () => {
   setState({ multiSelect: !multiSelect })
 }
 
-export const toggleValueIsRequired = () => {
-  const { valueIsRequired } = getState()
+export const toggleSelectionIsRequired = () => {
+  const { selectionIsRequired: valueIsRequired } = getState()
 
-  setState({ valueIsRequired: !valueIsRequired })
+  setState({ selectionIsRequired: !valueIsRequired })
 }
+
+export const addChoice = () => {
+  const { choices } = getState()
+  const newChoices: Choice[] = [...choices, { value: '', isDefault: false }]
+
+  setState({ choices: newChoices })
+}
+
+/*
+export const changeChoiceValue = (index: number, value: string) => {
+  const { choices } = getState()
+  const newChoices = choices.map((choice, index))
+}
+*/

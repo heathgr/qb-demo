@@ -1,19 +1,27 @@
 import { createStore } from 's-is-for-store'
 
+export const CHARACTER_LIMIT = 40
+export const CHOICE_LIMIT = 50
+
+export interface Choice {
+  value: string,
+  isDefault: boolean,
+}
+
 export interface AppState {
+  choices: Choice[],
   defaultValue: number,
   label: string,
   multiSelect: boolean,
-  valueIsRequired: boolean,
-  values: string[],
+  selectionIsRequired: boolean,
 }
 
 const initialState: AppState = {
+  choices: [],
   defaultValue: 0,
-  label: 'Just a Test',
+  label: '',
   multiSelect: false,
-  valueIsRequired: false,
-  values: [],
+  selectionIsRequired: false,
 }
 
 const store = createStore<AppState>(initialState)
