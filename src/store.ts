@@ -6,6 +6,7 @@ export const CHOICE_LIMIT = 50
 export interface Choice {
   value: string,
   isDefault: boolean,
+  uid: number,
 }
 
 export interface AppState {
@@ -16,7 +17,7 @@ export interface AppState {
   selectionIsRequired: boolean,
 }
 
-const initialState: AppState = {
+export const initialState: AppState = {
   choices: [],
   defaultValue: 0,
   label: '',

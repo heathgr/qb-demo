@@ -4,11 +4,13 @@ import React from 'react'
 import Choice from './components/Choice'
 import {
   addChoice,
+  resetState,
+  sortChoicesAlphabetically,
   toggleMultiSelect,
   toggleSelectionIsRequired,
   updateLabel,
 } from './effects'
-import store, { AppState } from './store'
+import store, { AppState, initialState } from './store'
 
 import './index.scss'
 
@@ -30,7 +32,7 @@ const App = () => (
           <section>
             <h2>Options</h2>
             <div className='flex-column'>
-              <div className='flex-row'>
+              <div>
                 <input
                   type='checkbox'
                   checked={multiSelect}
@@ -52,20 +54,21 @@ const App = () => (
             <h2>Choices</h2>
             <div className='flex-column'>
               {
-                choices.map(({ value, isDefault }, index) => <Choice
-                  key={value}
+                choices.map(({ uid, value, isDefault }, index) => <Choice
+                  key={uid}
                   value={value}
                   isDefault={isDefault}
                   index={index}
+                  uid={uid}
                 />)
               }
-              <button onClick={ () => addChoice() }>Add Choice</button>
-              <button>Sort Alphabetically</button>
+              <button onClick={() => addChoice()}>Add Choice</button>
+              <button onClick={() => sortChoicesAlphabetically()}>Sort Alphabetically</button>
             </div>
           </section>
           <footer>
             <button>Save</button>
-            <button>Reset</button>
+            <button onClick={() => resetState()}>Reset</button>
           </footer>
         </div>
       )
