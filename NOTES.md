@@ -6,3 +6,4 @@
 | 11/16 | 11:30PM | 11:55 PM | 25 Mins | Initial work on effect functions.|
 | 11/17 | 12:50PM | 1:30 PM | 40 Mins | Initital work on CSS and effect functions for handeling choices.|
 | 11/17 | 3:50PM | 4:10 PM | 20 Mins | Most functionality is in place.  Just need to smooth out a few wrinkles and make css prettier.|
+| 11/17 | 10:00PM | 10:25 | 25 Mins | For better or worse, the project is done!!!

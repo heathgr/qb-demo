@@ -4,20 +4,21 @@ import React from 'react'
 import Choice from './components/Choice'
 import {
   addChoice,
+  postField,
   resetState,
   sortChoicesAlphabetically,
   toggleMultiSelect,
   toggleSelectionIsRequired,
   updateLabel,
 } from './effects'
-import store, { AppState, initialState } from './store'
+import store, { AppState, CHOICE_LIMIT, validationState } from './store'
 
 import './index.scss'
 
 const App = () => (
   <StoreProvider<AppState> store={store}>
     {
-      ({ choices, label, multiSelect, selectionIsRequired }) => (
+      ({ choices, errors, label, multiSelect, selectionIsRequired, stateIsValid }) => (
         <div className='app-wrapper'>
           <h1>Field Builder</h1>
           <section>
@@ -54,6 +55,9 @@ const App = () => (
             <h2>Choices</h2>
             <div className='flex-column'>
               {
+                choices.length === 0 && <div>There are currently no choices.</div>
+              }
+              {
                 choices.map(({ uid, value, isDefault }, index) => <Choice
                   key={uid}
                   value={value}
@@ -62,13 +66,38 @@ const App = () => (
                   uid={uid}
                 />)
               }
-              <button onClick={() => addChoice()}>Add Choice</button>
+              {
+                choices.length < CHOICE_LIMIT
+                  && <button onClick={() => addChoice()}>Add Choice</button>
+              }
+              {
+                choices.length >= CHOICE_LIMIT
+                  && <div>{`The number of choices is limited to ${CHOICE_LIMIT}`}</div>
+              }
               <button onClick={() => sortChoicesAlphabetically()}>Sort Alphabetically</button>
             </div>
           </section>
           <footer>
-            <button>Save</button>
-            <button onClick={() => resetState()}>Reset</button>
+            <div className='flex-row'>
+              <button
+                className='cta'
+                disabled={stateIsValid !== validationState.VALID}
+                onClick={() => postField()}
+              >
+                Save
+              </button>
+              <button
+                className='destructive'
+                onClick={() => resetState()}
+              >
+                Reset
+              </button>
+            </div>
+            <div className='flex-column'>
+              {
+                errors.map((error, i) => <div className='error-message' key={i}>{error}</div>)
+              }
+            </div>
           </footer>
         </div>
       )

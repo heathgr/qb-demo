@@ -21,10 +21,13 @@
   },
   "dependencies": {
     "@types/array-move": "^1.0.0",
+    "@types/p-debounce": "^1.0.0",
     "@types/ramda": "^0.25.47",
     "@types/react": "^16.7.20",
     "@types/react-dom": "^16.0.11",
     "array-move": "^1.0.0",
+    "axios": "^0.18.0",
+    "p-debounce": "^1.0.0",
     "r-is-for-react": "^0.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

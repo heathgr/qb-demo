@@ -1,7 +1,14 @@
 import { createStore } from 's-is-for-store'
+import { validateState } from './effects'
 
 export const CHARACTER_LIMIT = 40
 export const CHOICE_LIMIT = 50
+
+export enum validationState {
+  UNKOWN,
+  VALID,
+  INVALID,
+}
 
 export interface Choice {
   value: string,
@@ -11,18 +18,23 @@ export interface Choice {
 
 export interface AppState {
   choices: Choice[],
-  defaultValue: number,
+  errors: string[],
   label: string,
   multiSelect: boolean,
   selectionIsRequired: boolean,
+  stateIsValid: validationState,
 }
 
 export const initialState: AppState = {
   choices: [],
-  defaultValue: 0,
+  errors: [
+    'You must enter a label',
+    'There are no choices entered.',
+  ],
   label: '',
   multiSelect: false,
   selectionIsRequired: false,
+  stateIsValid: validationState.INVALID,
 }
 
 const store = createStore<AppState>(initialState)

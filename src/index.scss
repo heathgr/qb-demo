@@ -1,6 +1,7 @@
 $light-blue: #D9EEF7;
 $dark-blue: #31789A;
 $grey: #CCCCCC;
+$green: #5FB760;
 
 html, body {
   margin: 0px;
@@ -62,14 +63,20 @@ html, body {
 
     input[type='checkbox'] {
       margin-right: 8px;
+      flex: 0 1 auto;
     }
   }
 
   footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 8px;
+
+    .error-message {
+      color: red;
+    }
   }
 }
 
@@ -78,10 +85,46 @@ html, body {
   flex-direction: row;
   align-items: center;
   margin: 4px 0px;
+
+  button {
+    margin: 0px 4px;
+  }
 }
 
 .flex-column {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
+
+  button {
+    margin: 4px 0px;
+  }
+}
+
+button {
+  padding: 8px;
+  background: none;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  font-size: 0.75em;
+  outline: none;
+}
+
+button:hover {
+  background: $light-blue;
+}
+
+button.cta {
+  background: $green;
+  color: white;
+}
+
+button.cta:disabled {
+  background: $grey;
+  color: grey;
+}
+
+button.destructive {
+  color: red;
+  border-color: red;
 }
